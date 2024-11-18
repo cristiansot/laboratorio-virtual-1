@@ -1,31 +1,48 @@
 let equipoData;
+let equipoDataNuevo;
 let cardsContainer = document.querySelector('.cards__container');
 let dropdownItems = document.querySelectorAll('.dropdown-item');
 
-fetch('./equipo.json')
-  .then(function (response) {
-    if (response.ok) {
-      console.log("Respuesta recibida:", response);
-      return response.json();
-    } else {
-      console.log("No se puede leer el archivo Json", response.status);
-    }
-  })
-  .then(function (data) {
+Promise.all([
+  fetch('./equipo.json')
+    .then(function (response) {
+      if (response.ok) {
+        console.log("Respuesta recibida (equipo.json):", response);
+        return response.json();
+      } else {
+        console.log("No se puede leer el archivo equipo.json", response.status);
+        throw new Error("Error al leer equipo.json");
+      }
+    }),
+  fetch('./equipo_nuevo.json')
+    .then(function (response) {
+      if (response.ok) {
+        console.log("Respuesta recibida (equipo_nuevo.json):", response);
+        return response.json();
+      } else {
+        console.log("No se puede leer el archivo equipo_nuevo.json", response.status);
+        throw new Error("Error al leer equipo_nuevo.json");
+      }
+    })
+])
+  .then(function ([data, dataNueva]) {
     equipoData = data;
-    const clone = [...equipoData];
-    console.log('Clonación', clone);
-    // console.log(equipoData);
+    equipoDataNuevo = dataNueva;
+    const cloneOne = [...equipoData];
+    console.log('Clonación 1:', cloneOne);
+    const cloneTwo = [...equipoDataNuevo];
+    console.log('Clonación 2:', cloneTwo);
+    const merge = [...cloneOne, ...cloneTwo];
+    console.log('Datos combinados:', merge);
 
     function mostrarTarjetas(filtro) {
       cardsContainer.innerHTML = '';
       let filteredData;
       if (filtro === 'todos') {
-        filteredData = equipoData;
+        filteredData = merge;
       } else {
-        filteredData = equipoData.filter(item => item.especialidad.toLowerCase() === filtro.toLowerCase());
+        filteredData = merge.filter(item => item.especialidad.toLowerCase() === filtro.toLowerCase());
       }
-
       filteredData.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
         cardsContainer.innerHTML += `
           <div class="col"> 
@@ -42,6 +59,7 @@ fetch('./equipo.json')
         console.log({ nombre, imagen, especialidad, resumen, años_experiencia });
       });
     }
+
     mostrarTarjetas('todos');
 
     dropdownItems.forEach(item => {
@@ -49,7 +67,6 @@ fetch('./equipo.json')
         event.preventDefault();
         const especialidadSeleccionada = item.textContent.trim();
         console.log("Especialidad seleccionada:", especialidadSeleccionada);
-
         if (especialidadSeleccionada === "Todas las Especialidades") {
           mostrarTarjetas('todos');
         } else {
@@ -61,5 +78,3 @@ fetch('./equipo.json')
   .catch(function (error) {
     console.log("Hubo un problema con la petición Fetch: " + error.message);
   });
-
- 
