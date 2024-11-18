@@ -13,7 +13,9 @@ fetch('./equipo.json')
   })
   .then(function (data) {
     equipoData = data;
-    console.log(equipoData);
+    const clone = [...equipoData];
+    console.log('Clonación', clone);
+    // console.log(equipoData);
 
     function mostrarTarjetas(filtro) {
       cardsContainer.innerHTML = '';
@@ -60,3 +62,4 @@ fetch('./equipo.json')
     console.log("Hubo un problema con la petición Fetch: " + error.message);
   });
 
+ 
