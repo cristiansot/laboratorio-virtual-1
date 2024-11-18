@@ -1,9 +1,3 @@
-/* Ruta de aprendizaje 
-//https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch
-//https://www.youtube.com/watch?v=WTbni8QMos0&ab_channel=CodingTube
-//https://www.freecodecamp.org/espanol/news/el-dom-de-javascript-un-tutorial-practico/
-*/
-
 let equipoData;
 let cardsContainer = document.querySelector('.cards__container');
 let dropdownItems = document.querySelectorAll('.dropdown-item');
@@ -30,19 +24,20 @@ fetch('./equipo.json')
         filteredData = equipoData.filter(item => item.especialidad.toLowerCase() === filtro.toLowerCase());
       }
 
-      filteredData.forEach(element => {
+      filteredData.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
         cardsContainer.innerHTML += `
           <div class="col"> 
             <div class="card m-1"> 
-              <img class="card-img-top" src="${element.imagen}" alt="${element.nombre}">
+              <img class="card-img-top" src="${imagen}" alt="${nombre}">
               <div class="card-body">
-                <h4 class="card-title mt-1">${element.nombre}</h4>
-                <h5 class="card-title">${element.especialidad}</h5>
-                <p class="card-text">${element.resumen}</p>
+                <h4 class="card-title mt-1">${nombre}</h4>
+                <h5 class="card-title">${especialidad}</h5>
+                <h6>${años_experiencia} años de experiencia</h6>
+                <p class="card-text">${resumen}</p>
               </div>
             </div>
           </div>`;
-        console.log(element);
+        console.log({ nombre, imagen, especialidad, resumen, años_experiencia });
       });
     }
     mostrarTarjetas('todos');
@@ -65,4 +60,3 @@ fetch('./equipo.json')
     console.log("Hubo un problema con la petición Fetch: " + error.message);
   });
 
-  
