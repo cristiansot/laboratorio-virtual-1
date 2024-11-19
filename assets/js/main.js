@@ -41,14 +41,14 @@ Promise.all([
     console.log(stringify);
 
     function mostrarTarjetas(filtro) {
-      cardsContainer.innerHTML = '';  
+      cardsContainer.innerHTML = '';
       let filteredData;
       if (filtro === 'todos') {
         filteredData = merge;
       } else {
         filteredData = merge.filter(item => item.especialidad.toLowerCase() === filtro.toLowerCase());
       }
-            
+
       filteredData.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
         cardsContainer.innerHTML += `
           <div class="col-12"> 
@@ -59,9 +59,13 @@ Promise.all([
                 <h5 class="card-title">${especialidad}</h5>
                 <h6>${años_experiencia} años de experiencia</h6>
                 <p class="card-text">${resumen}</p>
+                <button type="button" class="btn" style="background-color: #ff2a6b; color: #FFF; border-radius: 20px;"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                  Eliminar Doctor
+                </button>
+                </div>
               </div>
-                  </div>
-             </div>`;
+            </div>`;
         console.log({ nombre, imagen, especialidad, resumen, años_experiencia });
       });
     }
