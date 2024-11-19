@@ -32,30 +32,33 @@ Promise.all([
     console.log('Clonación 1:', cloneOne);
     const cloneTwo = [...equipoDataNuevo];
     console.log('Clonación 2:', cloneTwo);
-    const merge = [...cloneOne, ...cloneTwo];
+    const merge = [...equipoData, ...equipoDataNuevo];
     console.log('Datos combinados:', merge);
+    const stringify = JSON.stringify(merge);
+    console.log(stringify);
 
     function mostrarTarjetas(filtro) {
-      cardsContainer.innerHTML = '';
+      cardsContainer.innerHTML = '';  
       let filteredData;
       if (filtro === 'todos') {
         filteredData = merge;
       } else {
         filteredData = merge.filter(item => item.especialidad.toLowerCase() === filtro.toLowerCase());
       }
+            
       filteredData.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
         cardsContainer.innerHTML += `
           <div class="col"> 
             <div class="card m-1"> 
               <img class="card-img-top" src="${imagen}" alt="${nombre}">
-              <div class="card-body">
+               <div class="card-body">
                 <h4 class="card-title mt-1">${nombre}</h4>
                 <h5 class="card-title">${especialidad}</h5>
                 <h6>${años_experiencia} años de experiencia</h6>
                 <p class="card-text">${resumen}</p>
               </div>
-            </div>
-          </div>`;
+                  </div>
+             </div>`;
         console.log({ nombre, imagen, especialidad, resumen, años_experiencia });
       });
     }

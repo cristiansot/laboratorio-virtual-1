@@ -3,7 +3,7 @@
       "nombre": "Dra. Camila Ríos",
       "imagen": "assets/img/doc_09.jpg",
       "especialidad": "Gastroentereología",
-      "resumen": "La Dra. Camila Ríos es una profesional dedicada al cuidado integral de sus pacientes, especializada en la prevención y manejo de enfermedades comunes. Con un enfoque empático y personalizado, busca ofrecer atención de calidad y acompañar a sus pacientes en la mejora de su salud.",
+      "resumen": "La Dra. Camila Ríos es una profesional dedicada al cuidado integral de sus pacientes, especializada en la prevención y manejo de enfermedades gastrointetinales. Con un enfoque empático y personalizado, busca ofrecer atención de calidad y acompañar a sus pacientes en la mejora de su salud.",
       "años_experiencia": 3,
       "informacion_adicional": {
         "horarios_disponibles": ["Lunes a Viernes: 8:00 - 16:00"],
@@ -17,7 +17,7 @@
       "nombre": "Dr. Pablo Ortiz",
       "imagen": "assets/img/doc_10.jpg",
       "especialidad": "Traumatología",
-      "resumen": "El Dr. Pablo Ortiz es un odontólogo con experiencia en el manejo de tratamientos dentales básicos y preventivos. Su prioridad es garantizar una salud bucal óptima para sus pacientes, aplicando técnicas modernas y un trato cercano para generar confianza y satisfacción.",
+      "resumen": "El Dr. Pablo Ortiz es un Traumatólogo con experiencia en el manejo de tratamientos en rodilla deportiva. Su prioridad es garantizar una salud óptima para sus pacientes, aplicando técnicas modernas y un trato cercano para generar confianza y satisfacción.",
       "años_experiencia": 2,
       "informacion_adicional": {
         "horarios_disponibles": ["Martes y Jueves: 9:00 - 17:00", "Sábado: 9:00 - 13:00"],
@@ -44,8 +44,8 @@
     {
       "nombre": "Dra. Sofía Gutiérrez",
       "imagen": "assets/img/doc_12.jpg",
-      "especialidad": "Psicología",
-      "resumen": "La Dra. Sofía Gutiérrez es dermatóloga con experiencia en el diagnóstico y tratamiento de afecciones de la piel. Su práctica combina técnicas innovadoras y un enfoque preventivo para cuidar la salud dermatológica de sus pacientes, mejorando su calidad de vida.",
+      "especialidad": "Cardiología",
+      "resumen": "La Dra. Sofía Gutiérrez es Cardiologa con experiencia en el diagnóstico y tratamiento de afecciones al corazón. Su práctica combina técnicas innovadoras y un enfoque preventivo para cuidar la salud cardiovascular de sus pacientes, mejorando su calidad de vida.",
       "años_experiencia": 1,
       "informacion_adicional": {
         "horarios_disponibles": ["Lunes a Viernes: 9:00 - 15:00"],
