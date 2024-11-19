@@ -30,10 +30,13 @@ Promise.all([
     equipoDataNuevo = dataNueva;
     const cloneOne = [...equipoData];
     console.log('Clonación 1:', cloneOne);
+
     const cloneTwo = [...equipoDataNuevo];
     console.log('Clonación 2:', cloneTwo);
+
     const merge = [...equipoData, ...equipoDataNuevo];
     console.log('Datos combinados:', merge);
+
     const stringify = JSON.stringify(merge);
     console.log(stringify);
 
@@ -48,7 +51,7 @@ Promise.all([
             
       filteredData.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
         cardsContainer.innerHTML += `
-          <div class="col"> 
+          <div class="col-12"> 
             <div class="card m-1"> 
               <img class="card-img-top" src="${imagen}" alt="${nombre}">
                <div class="card-body">

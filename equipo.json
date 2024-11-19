@@ -4,7 +4,7 @@
     "imagen": "assets/img/doc_01.jpg",
     "especialidad": "Gastroentereología",
     "resumen": "El Dr. Felipe Muñoz es un gastroenterólogo altamente especializado con amplia experiencia en el diagnóstico y tratamiento de trastornos digestivos. Con un enfoque personalizado y basado en evidencia, el Dr. Muñoz se dedica a brindar atención integral a sus pacientes, ayudándolos a mejorar su calidad de vida a través de tratamientos efectivos y un seguimiento cercano.",
-    "años_experiencia": 20,
+    "años_experiencia": 8,
     "informacion_adicional": {
       "horarios_disponibles": ["Lunes a Viernes: 9:00 - 17:00", "Sábado: 9:00 - 13:00"],
       "contacto": {
@@ -32,7 +32,7 @@
     "imagen": "assets/img/doc_03.jpg",
     "especialidad": "Psicología",
     "resumen": "El Dr. Alejandro Figueroa es un especialista en salud mental dedicado a ofrecer un enfoque integral en el tratamiento de trastornos emocionales y psicológicos. Con un profundo compromiso por el bienestar de sus pacientes, el Dr. Figueroa utiliza técnicas basadas en evidencia y un enfoque empático para ayudar a las personas a superar sus desafíos, promover su salud mental y mejorar su calidad de vida.",
-    "años_experiencia": 15,
+    "años_experiencia": 3,
     "informacion_adicional": {
       "horarios_disponibles": ["Lunes, Miércoles y Viernes: 10:00 - 18:00"],
       "contacto": {
@@ -60,7 +60,7 @@
     "imagen": "assets/img/doc_05.jpg",
     "especialidad": "Traumatología",
     "resumen": "El Dr. Nicolás Rivera es un reconocido traumatólogo ortopédico con más de 15 años de experiencia en el diagnóstico y tratamiento de lesiones musculoesqueléticas. Su especialidad abarca desde fracturas complejas hasta la rehabilitación postquirúrgica de deportistas de alto rendimiento. Con un enfoque innovador, integra tecnología avanzada y protocolos personalizados para garantizar la recuperación óptima de sus pacientes. Además, es un apasionado de la docencia, impartiendo cursos de actualización para nuevos profesionales en traumatología.",
-    "años_experiencia": 15,
+    "años_experiencia": 5,
     "informacion_adicional": {
       "horarios_disponibles": ["Lunes a Viernes: 8:00 - 16:00"],
       "contacto": {
@@ -88,7 +88,7 @@
     "imagen": "assets/img/doc_07.jpg",
     "especialidad": "Traumatología",
     "resumen": "El Dr. Martín Pérez es un cirujano traumatológico experto en intervenciones reconstructivas y técnicas de rehabilitación avanzada. Con una carrera que supera los 12 años, se especializa en casos de lesiones complejas y en el manejo de patologías crónicas del sistema musculoesquelético. Su compromiso con la innovación lo ha llevado a participar en estudios clínicos sobre prótesis de última generación y terapias regenerativas. Además, dedica parte de su tiempo a proyectos comunitarios que promueven el acceso a la atención traumatológica en zonas rurales.",
-    "años_experiencia": 12,
+    "años_experiencia": 11,
     "informacion_adicional": {
       "horarios_disponibles": ["Miércoles y Viernes: 9:00 - 15:00"],
       "contacto": {

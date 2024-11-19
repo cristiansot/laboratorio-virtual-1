@@ -41,24 +41,46 @@
   </header>
 
   <section class="filtrar">
-    <div class="container text-center p-3">
-      <div class="dropdown" data-bs-theme="Light">
-        <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButtonDark" data-bs-toggle="dropdown" aria-expanded="false">
-          Seleccione una Especialidad
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonDark">
-          <li><a class="dropdown-item" href="#">Gastroentereología</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Cardiología</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Psicología</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Traumatología</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Todas las Especialidades</a></li>
-        </ul>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg">
+          <div class="container text-center p-3">
+            <div class="dropdown" data-bs-theme="Light">
+              <button class="btn btn-outline-light dropdown-toggle" style="width: 100%;" type="button" id="dropdownMenuButtonDark" data-bs-toggle="dropdown" aria-expanded="false">
+                Seleccione una Especialidad
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonDark">
+                <li><a class="dropdown-item" href="#">Gastroentereología</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Cardiología</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Psicología</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Traumatología</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Todas las Especialidades</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg">
+          <div class="input-group p-3">
+            <input type="text" class="form-control" placeholder="Buscar Profesional" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-warning" style="z-index: 0;" type="button" id="button-addon2">Buscar</button>
+          </div>
+        </div>
+        <div class="col-lg">
+          <div class="input-group p-3">
+            <label class="input-group-text" style="z-index: 0;" for="inputGroupSelect01">Ordenar por:</label>
+            <select class="form-select" id="inputGroupSelect01">
+              <option selected>Seleccione...</option>
+              <option value="1">Años de Experiencia</option>
+              <option value="2">Nombre</option>
+            </select>
+          </div>
+        </div>
       </div>
-    </div>
+    </div>    
   </section>
 
   <section>
@@ -87,7 +109,7 @@
     <div class="container-fluid text-center">
       <h1 class="mb-4 ubicacion__title mt-4">Ubicación</h1>
       <div class="row">
-        <div class="col-12">
+        <div class="col-lg">
           <img class="footer__map" src="assets/img/ubicacion.png" alt="mapa de ubicacion del hospital">
         </div>
       </div>
