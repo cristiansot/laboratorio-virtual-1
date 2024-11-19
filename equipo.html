@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <header class="header">
+  <header class="header" style="z-index: 2;">
     <nav class="row navbar navbar-expand-lg">
       <div class="container-fluid">
         <a href="index.html">
@@ -45,19 +45,28 @@
       <div class="row">
         <div class="col-lg">
           <div class="container text-center p-3">
-            <div class="dropdown" data-bs-theme="Light">
-              <button class="btn btn-outline-light dropdown-toggle" style="width: 100%;" type="button" id="dropdownMenuButtonDark" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="dropdown" data-bs-theme="Light"  style="z-index: 1;">
+              <button class="btn btn-outline-light dropdown-toggle" style="width: 100%;" type="button"
+                id="dropdownMenuButtonDark" data-bs-toggle="dropdown" aria-expanded="false">
                 Seleccione una Especialidad
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonDark">
                 <li><a class="dropdown-item" href="#">Gastroentereología</a></li>
-                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
                 <li><a class="dropdown-item" href="#">Cardiología</a></li>
-                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
                 <li><a class="dropdown-item" href="#">Psicología</a></li>
-                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
                 <li><a class="dropdown-item" href="#">Traumatología</a></li>
-                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
                 <li><a class="dropdown-item" href="#">Todas las Especialidades</a></li>
               </ul>
             </div>
@@ -65,7 +74,8 @@
         </div>
         <div class="col-lg">
           <div class="input-group p-3">
-            <input type="text" class="form-control" placeholder="Buscar Profesional" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <input type="text" class="form-control" placeholder="Buscar Profesional" aria-label="Recipient's username"
+              aria-describedby="button-addon2">
             <button class="btn btn-warning" style="z-index: 0;" type="button" id="button-addon2">Buscar</button>
           </div>
         </div>
@@ -79,15 +89,47 @@
             </select>
           </div>
         </div>
+        <div class="col-lg">
+          <div class="dropdown p-3" style="z-index: 1;">
+            <button type="button" class="btn btn-outline-light dropdown-toggle" style="width: 100%;"
+              data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+              Agregar Doctor
+            </button>
+            <form class="dropdown-menu p-4">
+
+              <div class="mb-3">
+                <label for="example" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Dr. Juanito Mena">
+              </div>
+
+              <div class="mb-3">
+                <label for="example" class="form-label">Especialidad</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Gastroentereología">
+              </div>
+
+              <div class="mb-3">
+                <label for="example" class="form-label">Años de experiencia</label>
+                <input type="text" class="form-control" id="nombre" placeholder="4">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Resumen</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Escriba un breve resumen"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+          </div>
+        </div>
       </div>
-    </div>    
+    </div>
   </section>
 
   <section>
     <div class="container">
       <p class="resumen">En Nursing Hospital, estamos comprometidos con la excelencia médica, brindando atención de alta
         calidad
-        centrada en el paciente. A través de un equipo de profesionales altamente capacitados y tecnología de vanguardia,
+        centrada en el paciente. A través de un equipo de profesionales altamente capacitados y tecnología de
+        vanguardia,
         nos esforzamos por ofrecer tratamientos seguros y eficaces, siempre priorizando el bienestar y la dignidad de
         nuestros
         pacientes. Nuestro enfoque integral asegura que cada persona reciba cuidados personalizados, con empatía y
@@ -103,8 +145,8 @@
       </div>
     </div>
   </section>
-  
-  
+
+
   <footer>
     <div class="container-fluid text-center">
       <h1 class="mb-4 ubicacion__title mt-4">Ubicación</h1>
