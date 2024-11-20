@@ -46,8 +46,25 @@ Promise.all([
       }
       return merge;
     }
-
     bubbleSort(merge);
+
+    cardsContainer.addEventListener('click', function (event) {
+      if (event.target && event.target.classList.contains('btn')) {
+        const card = event.target.closest('.card'); 
+        const doctorName = card.querySelector('.card-title').textContent; 
+        eliminarDoctor(doctorName);
+      }
+    });
+    
+    function eliminarDoctor(nombreDoctor) {
+      const index = merge.findIndex(doctor => doctor.nombre === nombreDoctor);
+      if (index !== -1) {
+        merge.splice(index, 1); 
+        mostrarTarjetas('todos');
+        console.log('Doctor eliminado:', nombreDoctor);
+        console.log('Array actualizado:', merge);
+      }
+    }
 
     function mostrarTarjetas(filtro) {
       cardsContainer.innerHTML = '';
@@ -64,18 +81,18 @@ Promise.all([
           mostrarTarjetasOrdenadas();
         }
       });
-      
+
       function ordenarPorExperiencia(data) {
         const maxExperiencia = Math.max(...data.map(item => item.años_experiencia));
         const count = new Array(maxExperiencia + 1).fill(0);
-      
+
         data.forEach(item => {
           count[item.años_experiencia]++;
         });
         for (let i = 1; i < count.length; i++) {
           count[i] += count[i - 1];
         }
-      
+
         const sortedData = new Array(data.length);
         for (let i = data.length - 1; i >= 0; i--) {
           const experiencia = data[i].años_experiencia;
@@ -83,10 +100,10 @@ Promise.all([
           sortedData[index] = data[i];
           count[experiencia]--;
         }
-          merge = sortedData;
-          console.log(merge);
+        merge = sortedData;
+        console.log(merge);
       }
-      
+
       function mostrarTarjetasOrdenadas() {
         cardsContainer.innerHTML = '';
         merge.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
@@ -99,7 +116,7 @@ Promise.all([
                   <h5 class="card-title">${especialidad}</h5>
                   <h6>${años_experiencia} años de experiencia</h6>
                   <p class="card-text">${resumen}</p>
-                  <button type="button" class="btn" style="background-color: #ff2a6b; color: #FFF; border-radius: 20px;">
+                  <button type="button" class="btnDelete" style="background-color: #ff2a6b; color: #FFF; border-radius: 20px;">
                     Eliminar Doctor
                   </button>
                 </div>
@@ -107,7 +124,7 @@ Promise.all([
             </div>`;
         });
       }
-      
+
       filteredData.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
         cardsContainer.innerHTML += `
           <div class="col-12"> 
