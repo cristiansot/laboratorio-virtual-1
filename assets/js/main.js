@@ -6,6 +6,99 @@ let buscador = document.querySelector('.buscador');
 let btnBuscar = document.querySelector('.btnBuscar');
 let merge = [];
 
+function bubbleSort(merge) {
+  for (let i = 0; i < merge.length; i++) {
+    if (merge[i] > merge[i + 1]) {
+      let j = merge[i + 1];
+      merge[i + 1] = merge[i];
+      merge[i] = j;
+      bubbleSort(merge);
+    }
+  }
+  return merge;
+}
+
+function ordenarPorExperiencia(data) {
+  const maxExperiencia = Math.max(...data.map(item => item.años_experiencia));
+  const count = new Array(maxExperiencia + 1).fill(0);
+
+  data.forEach(item => {
+    count[item.años_experiencia]++;
+  });
+  for (let i = 1; i < count.length; i++) {
+    count[i] += count[i - 1];
+  }
+
+  const sortedData = new Array(data.length);
+  for (let i = data.length - 1; i >= 0; i--) {
+    const experiencia = data[i].años_experiencia;
+    const index = count[experiencia] - 1;
+    sortedData[index] = data[i];
+    count[experiencia]--;
+  }
+  merge = sortedData;
+  console.log(merge);
+}
+
+function mostrarTarjetas(filtro) {
+  cardsContainer.innerHTML = '';
+  let filteredData;
+  if (filtro === 'todos') {
+    filteredData = merge;
+  } else {
+    filteredData = merge.filter(item => item.especialidad.toLowerCase() === filtro.toLowerCase());
+  }
+
+  filteredData.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
+    cardsContainer.innerHTML += `
+      <div class="col-12"> 
+        <div class="card m-1"> 
+          <img class="card-img-top" src="${imagen}" alt="${nombre}">
+          <div class="card-body">
+            <h4 class="card-title mt-1">${nombre}</h4>
+            <h5 class="card-title">${especialidad}</h5>
+            <h6>${años_experiencia} años de experiencia</h6>
+            <p class="card-text">${resumen}</p>
+            <button type="button" class="btn" style="background-color: #ff2a6b; color: #FFF; border-radius: 20px;">
+              Eliminar Doctor
+            </button>
+          </div>
+        </div>
+      </div>`;
+  });
+}
+
+function eliminarDoctor(nombreDoctor) {
+  const index = merge.findIndex(doctor => doctor.nombre === nombreDoctor);
+  if (index !== -1) {
+    merge.splice(index, 1);
+    mostrarTarjetas('todos');
+    console.log('Doctor eliminado:', nombreDoctor);
+    console.log('Array actualizado:', merge);
+  }
+}
+
+function mostrarTarjetasConFiltro(filteredData) {
+  cardsContainer.innerHTML = '';
+  filteredData.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
+    cardsContainer.innerHTML += `
+      <div class="col-12"> 
+        <div class="card m-1"> 
+          <img class="card-img-top" src="${imagen}" alt="${nombre}">
+          <div class="card-body">
+            <h4 class="card-title mt-1">${nombre}</h4>
+            <h5 class="card-title">${especialidad}</h5>
+            <h6>${años_experiencia} años de experiencia</h6>
+            <p class="card-text">${resumen}</p>
+            <button type="button" class="btn" style="background-color: #ff2a6b; color: #FFF; border-radius: 20px;">
+              Eliminar Doctor
+            </button>
+          </div>
+        </div>
+      </div>`;
+  });
+}
+
 Promise.all([
   fetch('./equipo.json')
     .then(function (response) {
@@ -28,122 +121,13 @@ Promise.all([
       }
     })
 ])
-  .then(function ([data, dataNueva]) {
+  .then(([data, dataNueva]) => {
     equipoData = data;
     equipoDataNuevo = dataNueva;
     merge = [...equipoData, ...equipoDataNuevo];
-
     console.log('Datos combinados:', merge);
 
-    function bubbleSort(merge) {
-      for (let i = 0; i < merge.length; i++) {
-        if (merge[i] > merge[i + 1]) {
-          let j = merge[i + 1];
-          merge[i + 1] = merge[i];
-          merge[i] = j;
-          bubbleSort(merge);
-        }
-      }
-      return merge;
-    }
     bubbleSort(merge);
-
-    cardsContainer.addEventListener('click', function (event) {
-      if (event.target && event.target.classList.contains('btn')) {
-        const card = event.target.closest('.card'); 
-        const doctorName = card.querySelector('.card-title').textContent; 
-        eliminarDoctor(doctorName);
-      }
-    });
-    
-    function eliminarDoctor(nombreDoctor) {
-      const index = merge.findIndex(doctor => doctor.nombre === nombreDoctor);
-      if (index !== -1) {
-        merge.splice(index, 1); 
-        mostrarTarjetas('todos');
-        console.log('Doctor eliminado:', nombreDoctor);
-        console.log('Array actualizado:', merge);
-      }
-    }
-
-    function mostrarTarjetas(filtro) {
-      cardsContainer.innerHTML = '';
-      let filteredData;
-      if (filtro === 'todos') {
-        filteredData = merge;
-      } else {
-        filteredData = merge.filter(item => item.especialidad.toLowerCase() === filtro.toLowerCase());
-      }
-
-      document.querySelector('#inputGroupSelect01').addEventListener('change', function () {
-        if (this.value === '1') {
-          ordenarPorExperiencia(merge);
-          mostrarTarjetasOrdenadas();
-        }
-      });
-
-      function ordenarPorExperiencia(data) {
-        const maxExperiencia = Math.max(...data.map(item => item.años_experiencia));
-        const count = new Array(maxExperiencia + 1).fill(0);
-
-        data.forEach(item => {
-          count[item.años_experiencia]++;
-        });
-        for (let i = 1; i < count.length; i++) {
-          count[i] += count[i - 1];
-        }
-
-        const sortedData = new Array(data.length);
-        for (let i = data.length - 1; i >= 0; i--) {
-          const experiencia = data[i].años_experiencia;
-          const index = count[experiencia] - 1;
-          sortedData[index] = data[i];
-          count[experiencia]--;
-        }
-        merge = sortedData;
-        console.log(merge);
-      }
-
-      function mostrarTarjetasOrdenadas() {
-        cardsContainer.innerHTML = '';
-        merge.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
-          cardsContainer.innerHTML += `
-            <div class="col-12"> 
-              <div class="card m-1"> 
-                <img class="card-img-top" src="${imagen}" alt="${nombre}">
-                <div class="card-body">
-                  <h4 class="card-title mt-1">${nombre}</h4>
-                  <h5 class="card-title">${especialidad}</h5>
-                  <h6>${años_experiencia} años de experiencia</h6>
-                  <p class="card-text">${resumen}</p>
-                  <button type="button" class="btnDelete" style="background-color: #ff2a6b; color: #FFF; border-radius: 20px;">
-                    Eliminar Doctor
-                  </button>
-                </div>
-              </div>
-            </div>`;
-        });
-      }
-
-      filteredData.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
-        cardsContainer.innerHTML += `
-          <div class="col-12"> 
-            <div class="card m-1"> 
-              <img class="card-img-top" src="${imagen}" alt="${nombre}">
-               <div class="card-body">
-                <h4 class="card-title mt-1">${nombre}</h4>
-                <h5 class="card-title">${especialidad}</h5>
-                <h6>${años_experiencia} años de experiencia</h6>
-                <p class="card-text">${resumen}</p>
-                <button type="button" class="btn" style="background-color: #ff2a6b; color: #FFF; border-radius: 20px;">
-                  Eliminar Doctor
-                </button>
-                </div>
-              </div>
-            </div>`;
-      });
-    }
-
     mostrarTarjetas('todos');
 
     dropdownItems.forEach(item => {
@@ -151,11 +135,7 @@ Promise.all([
         event.preventDefault();
         const especialidadSeleccionada = item.textContent.trim();
         console.log("Especialidad seleccionada:", especialidadSeleccionada);
-        if (especialidadSeleccionada === "Todas las Especialidades") {
-          mostrarTarjetas('todos');
-        } else {
-          mostrarTarjetas(especialidadSeleccionada.toLowerCase());
-        }
+        mostrarTarjetas(especialidadSeleccionada === "Todas las Especialidades" ? 'todos' : especialidadSeleccionada.toLowerCase());
       });
     });
 
@@ -170,27 +150,19 @@ Promise.all([
       }
     });
 
-    function mostrarTarjetasConFiltro(filteredData) {
-      cardsContainer.innerHTML = '';
-      filteredData.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
-        cardsContainer.innerHTML += `
-          <div class="col-12"> 
-            <div class="card m-1"> 
-              <img class="card-img-top" src="${imagen}" alt="${nombre}">
-               <div class="card-body">
-                <h4 class="card-title mt-1">${nombre}</h4>
-                <h5 class="card-title">${especialidad}</h5>
-                <h6>${años_experiencia} años de experiencia</h6>
-                <p class="card-text">${resumen}</p>
-                <button type="button" class="btn" style="background-color: #ff2a6b; color: #FFF; border-radius: 20px;">
-                  Eliminar Doctor
-                </button>
-                </div>
-              </div>
-            </div>`;
-      });
-    }
+    cardsContainer.addEventListener('click', function (event) {
+      if (event.target && event.target.classList.contains('btn')) {
+        const card = event.target.closest('.card');
+        const doctorName = card.querySelector('.card-title').textContent;
+        eliminarDoctor(doctorName);
+      }
+    });
+
+    document.querySelector('#inputGroupSelect01').addEventListener('change', function () {
+      if (this.value === '1') {
+        ordenarPorExperiencia(merge);
+        mostrarTarjetas('todos');
+      }
+    });
   })
-  .catch(function (error) {
-    console.log("Hubo un problema con la petición Fetch: " + error.message);
-  });
+  .catch(error => console.log("Hubo un problema con la petición Fetch: " + error.message));
