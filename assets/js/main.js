@@ -58,6 +58,56 @@ Promise.all([
         filteredData = merge.filter(item => item.especialidad.toLowerCase() === filtro.toLowerCase());
       }
 
+      document.querySelector('#inputGroupSelect01').addEventListener('change', function () {
+        if (this.value === '1') {
+          ordenarPorExperiencia(merge);
+          mostrarTarjetasOrdenadas();
+        }
+      });
+      
+      function ordenarPorExperiencia(data) {
+        const maxExperiencia = Math.max(...data.map(item => item.años_experiencia));
+        const count = new Array(maxExperiencia + 1).fill(0);
+      
+        data.forEach(item => {
+          count[item.años_experiencia]++;
+        });
+        for (let i = 1; i < count.length; i++) {
+          count[i] += count[i - 1];
+        }
+      
+        const sortedData = new Array(data.length);
+        for (let i = data.length - 1; i >= 0; i--) {
+          const experiencia = data[i].años_experiencia;
+          const index = count[experiencia] - 1;
+          sortedData[index] = data[i];
+          count[experiencia]--;
+        }
+          merge = sortedData;
+          console.log(merge);
+      }
+      
+      function mostrarTarjetasOrdenadas() {
+        cardsContainer.innerHTML = '';
+        merge.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
+          cardsContainer.innerHTML += `
+            <div class="col-12"> 
+              <div class="card m-1"> 
+                <img class="card-img-top" src="${imagen}" alt="${nombre}">
+                <div class="card-body">
+                  <h4 class="card-title mt-1">${nombre}</h4>
+                  <h5 class="card-title">${especialidad}</h5>
+                  <h6>${años_experiencia} años de experiencia</h6>
+                  <p class="card-text">${resumen}</p>
+                  <button type="button" class="btn" style="background-color: #ff2a6b; color: #FFF; border-radius: 20px;">
+                    Eliminar Doctor
+                  </button>
+                </div>
+              </div>
+            </div>`;
+        });
+      }
+      
       filteredData.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
         cardsContainer.innerHTML += `
           <div class="col-12"> 
