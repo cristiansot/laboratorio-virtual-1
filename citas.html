@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto</title>
+  <title>Reserva tu Cita</title>
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
@@ -32,7 +32,7 @@
               <a class="nav-link" href="contacto.html">Contacto</a>
             </li>
             <li class="nav-item">
-              <button class="btn btn-outline-danger my-2 my-sm-0 header__button" onclick="location.href='citas.html';"  type="submit">Reservar Cita</button>
+              <button class="btn btn-outline-danger my-2 my-sm-0 header__button" href="citas.html" type="submit">Reservar Cita</button>
             </li>
           </ul>
         </div>
@@ -41,19 +41,8 @@
   </header>
 
   <section>
-    <p class="resumen">En Nursing Hospital, estamos comprometidos con la excelencia médica, brindando atención de alta
-      calidad
-      centrada en el paciente. A través de un equipo de profesionales altamente capacitados y tecnología de vanguardia,
-      nos esforzamos por ofrecer tratamientos seguros y eficaces, siempre priorizando el bienestar y la dignidad de
-      nuestros
-      pacientes. Nuestro enfoque integral asegura que cada persona reciba cuidados personalizados, con empatía y
-      dedicación
-      en cada etapa de su tratamiento.</p>
-  </section>
-
-  <section>
-    <form class="container col-10">
-      <h1 class="contacto__title">Contacto</h1>
+    <form class="container col-xl-3 mt-4">
+      <h1 class="contacto__title text-center">Reserva tu Cita</h1>
       <div class="mb-3">
         <label for="userName" class="form-label">Nombre</label>
         <input type="text" class="form-control" id="userName">
@@ -63,17 +52,15 @@
         <input type="text" class="form-control" id="email">
       </div>
       <div class="mb-3">
-        <label for="asunto" class="form-label">Asunto</label>
-        <input type="text" class="form-control" id="asunto">
-      </div>
-      <div class="mb-3">
-        <label for="mensaje" class="form-label">Mensaje</label>
-        <textarea class="form-control" id="mensaje" rows="3"></textarea>
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Seleccione un especialista</option>
+        </select>
       </div>
       <button type="button" class="btn btn-primary" id="submitBtn">Enviar</button>
     </form>
   </section>
   
+  <section id="citaSection" class="container mt-4 col-xl-3"></section>
 
   <footer>
     <div class="container-fluid text-center">
@@ -115,7 +102,8 @@
 
   </footer>
   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./assets/js/contacto.js"></script>
+  <script src="./assets/js/stack.js"></script>
+
 </body>
 
 </html>

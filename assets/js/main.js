@@ -3,7 +3,6 @@ let equipoDataNuevo;
 let cardsContainer = document.querySelector('.cards__container');
 let dropdownItems = document.querySelectorAll('.dropdown-item');
 let buscador = document.querySelector('.buscador');
-let btnBuscar = document.querySelector('.btnBuscar');
 let merge = [];
 let btnForm = document.querySelector('.btnForm');
 
