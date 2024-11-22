@@ -5,6 +5,7 @@ let dropdownItems = document.querySelectorAll('.dropdown-item');
 let buscador = document.querySelector('.buscador');
 let btnBuscar = document.querySelector('.btnBuscar');
 let merge = [];
+let btnForm = document.querySelector('.btnForm');
 
 function bubbleSort(merge) {
   for (let i = 0; i < merge.length; i++) {
@@ -67,6 +68,39 @@ function mostrarTarjetas(filtro) {
       </div>`;
   });
 }
+
+btnForm.addEventListener('click', function (event) {
+  event.preventDefault(); 
+  const nombre = inputName.value.trim();
+  const especialidad = inputEspecialidad.value.trim();
+  const años_experiencia = parseInt(inputExperiencia.value.trim());
+  const resumen = inputResumen.value.trim();
+
+  if (!nombre || !especialidad || !resumen || isNaN(años_experiencia) || años_experiencia <= 0) {
+    alert('Por favor, complete todos los campos correctamente.');
+    return;
+  }
+
+  const nuevoDoctor = {
+    nombre,
+    especialidad,
+    años_experiencia,
+    resumen,
+    imagen: './assets/img/doc_default.jpg', 
+  };
+
+  merge.push(nuevoDoctor);
+  mostrarTarjetas('todos');
+
+  inputName.value = '';
+  inputEspecialidad.value = '';
+  inputExperiencia.value = '';
+  inputResumen.value = '';
+
+  alert('¡Doctor agregado exitosamente!');
+  console.log('¡Doctor agregado exitosamente!');
+});
+
 
 function eliminarDoctor(nombreDoctor) {
   const index = merge.findIndex(doctor => doctor.nombre === nombreDoctor);
