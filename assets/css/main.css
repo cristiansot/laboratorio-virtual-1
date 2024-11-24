@@ -179,6 +179,36 @@ ul {
   border-radius: 10px;
 }
 
+#queueContainer {
+  margin-top: 2rem;
+}
+#queueContainer .card {
+  border: 1px solid #dee2e6;
+  border-radius: 18px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#queueContainer .card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+#queueContainer .card .card-body {
+  padding: 1.5rem;
+}
+#queueContainer .card .card-body .card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+#queueContainer .card .card-body .card-text {
+  font-size: 1rem;
+  color: #555;
+}
+#queueContainer .card .card-body .card-text strong {
+  color: #007bff;
+}
+
 .footer {
   align-items: center;
 }

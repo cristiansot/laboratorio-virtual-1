@@ -41,37 +41,46 @@
   </header>
 
   <section>
-    <p class="resumen">En Nursing Hospital, estamos comprometidos con la excelencia médica, brindando atención de alta
-      calidad
-      centrada en el paciente. A través de un equipo de profesionales altamente capacitados y tecnología de vanguardia,
-      nos esforzamos por ofrecer tratamientos seguros y eficaces, siempre priorizando el bienestar y la dignidad de
-      nuestros
-      pacientes. Nuestro enfoque integral asegura que cada persona reciba cuidados personalizados, con empatía y
-      dedicación
-      en cada etapa de su tratamiento.</p>
+    <div class="container">
+      <p class="resumen">En Nursing Hospital, estamos comprometidos con la excelencia médica, brindando atención de alta
+        calidad
+        centrada en el paciente. A través de un equipo de profesionales altamente capacitados y tecnología de vanguardia,
+        nos esforzamos por ofrecer tratamientos seguros y eficaces, siempre priorizando el bienestar y la dignidad de
+        nuestros
+        pacientes. Nuestro enfoque integral asegura que cada persona reciba cuidados personalizados, con empatía y
+        dedicación
+        en cada etapa de su tratamiento.</p>
+    </div>
   </section>
 
   <section>
-    <form class="container col-10">
-      <h1 class="contacto__title">Contacto</h1>
-      <div class="mb-3">
-        <label for="userName" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="userName">
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">E-mail</label>
-        <input type="text" class="form-control" id="email">
-      </div>
-      <div class="mb-3">
-        <label for="asunto" class="form-label">Asunto</label>
-        <input type="text" class="form-control" id="asunto">
-      </div>
-      <div class="mb-3">
-        <label for="mensaje" class="form-label">Mensaje</label>
-        <textarea class="form-control" id="mensaje" rows="3"></textarea>
-      </div>
-      <button type="button" class="btn btn-primary" id="submitBtn">Enviar</button>
-    </form>
+    <div class="container">
+      <form class="container col-4">
+        <h1 class="contacto__title text-center">Contacto</h1>
+        <div class="mb-3">
+          <label for="userName" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="userName">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">E-mail</label>
+          <input type="text" class="form-control" id="email">
+        </div>
+        <div class="mb-3">
+          <label for="asunto" class="form-label">Asunto</label>
+          <input type="text" class="form-control" id="asunto">
+        </div>
+        <div class="mb-3">
+          <label for="mensaje" class="form-label">Mensaje</label>
+          <textarea class="form-control" id="mensaje" rows="3"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" id="submitBtn">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="container mt-5">
+    <h1 class="contacto__title text-center">Cola de Pacientes</h1>
+    <div id="queueContainer" class="mt-4"></div>
   </section>
   
 
@@ -116,6 +125,7 @@
   </footer>
   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./assets/js/contacto.js"></script>
+  <script src="./assets/js/queue.js"></script>
 </body>
 
 </html>
