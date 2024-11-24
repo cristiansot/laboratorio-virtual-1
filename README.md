@@ -16,8 +16,10 @@ En este proyecto, se han utilizado dos archivos JSON (`equipo.json` y `equipo_nu
 
 #### 1. **Clonación**
    - Los datos de ambos archivos JSON (`equipo.json` y `equipo_nuevo.json`) se cargan a través de la función `fetch` en el navegador. La clonación se realiza utilizando el operador de propagación (`...`) para combinar los dos arrays de objetos en un solo array `merge`:
-   ```javascript
-   merge = [...data, ...dataNueva];
+   ```
+    javascript
+    merge = [...data, ...dataNueva];
+    ```
    - Esto asegura que se combinan los datos de ambos archivos sin modificar los originales.
 
 #### 2. Merge
@@ -30,10 +32,12 @@ Se combinan los datos de dos fuentes (`equipo.json` y `equipo_nuevo.json`) y se 
 #### Recorrido
 Para mostrar la información, se recorre el array `merge` utilizando métodos como `forEach` para iterar sobre cada objeto y renderizar las tarjetas de los doctores en el DOM.
 
-```javascript
+```
+javascript
 merge.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
   // Renderización de las tarjetas
-});``
+});
+```
 
 ## 2. Estructuras de Datos Implementadas
 
@@ -64,7 +68,9 @@ El algoritmo de ordenación utilizado es el `Bubble Sort`. Este algoritmo compar
 
 **Implementación:**
 
-```javascript
+
+```
+javascript
 function bubbleSort(merge) {
   for (let i = 0; i < merge.length; i++) {
     if (merge[i] > merge[i + 1]) {
@@ -75,7 +81,8 @@ function bubbleSort(merge) {
     }
   }
   return merge;
-}`
+}
+```
 
 ### Complejidad
 
