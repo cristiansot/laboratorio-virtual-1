@@ -33,7 +33,7 @@ Para mostrar la información, se recorre el array `merge` utilizando métodos co
 ```javascript
 merge.forEach(({ nombre, imagen, especialidad, resumen, años_experiencia }) => {
   // Renderización de las tarjetas
-});
+});``
 
 ## 2. Estructuras de Datos Implementadas
 
@@ -75,7 +75,7 @@ function bubbleSort(merge) {
     }
   }
   return merge;
-}```
+}`
 
 ### Complejidad
 
